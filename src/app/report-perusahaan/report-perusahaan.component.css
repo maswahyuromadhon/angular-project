@@ -1,0 +1,71 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+ul{
+    list-style: none;
+}
+table{
+    text-align: center;
+    background: whitesmoke;
+    margin-top: 10px;
+    margin-left: 7px;
+    box-shadow: 5px 10px 10px teal;
+
+}
+
+thead th{
+    text-align: center;
+}
+
+
+#pagschedule{
+    margin-left: 140px;
+    margin-top: 15px;
+}
+
+select{
+    height: 31px;
+    margin-left: 30px;
+}
+
+#selectbulan{
+    margin-left: 5px;
+}
+
+#btncari{
+    margin-top: -3px;
+    margin-left: 5px;
+}
+
+#selectpayroll{
+    margin-left: 4px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgb(8, 9, 10);    
+    color: whitesmoke;
+    text-align: center;
+  }
+
+  h3{
+    text-align: center;
+	color: rgba(7, 8, 6, 0.698);
+	  font-family: 'Anton', sans-serif;
+	  font-size: 30px;
+	  text-shadow: 3px 3px 0px #D7DACC, 8px 8px 0px rgba(0, 0, 0, 0.1);
+}
+
+#posisidua{
+    margin-top: 50px;
+}
+
+#posisiketiga{
+    margin-top: -20px;
+}
+
+#posisiempat{
+    margin-top: -20px;
+}

@@ -1,0 +1,164 @@
+<nav id="setnav" class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <div id="setbrand" class="navbar-brand">
+        <img src="./assets/lawencon.png" height="auto" width="130" routerLink="/home" >
+      </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active"> 
+          <a class="nav-link" routerLink="/company"><i class="fa fa-building-o"></i> Client<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/schedule"><i class="fa fa-tags"></i> Schedule<span class="sr-only">(current)</span></a>
+        </li>
+        
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/dataaccount"><i class="fa fa-id-badge"></i> Account<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link active" routerLink="/reportperusahaan"><i class="fa fa-database"></i> Report<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+  
+      <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item active">
+          <a class="nav-link " routerLink="#" data-toggle="modal" data-target="#notif" id="tambahcompany"><span id="lonceng" class="material-icons" >notifications_active</span></a>
+          </li>
+          <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <fa name="cog" animation="spin"></fa>Setting
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" routerLink="#" data-toggle="modal" data-target="#editAkun" id="tambahcompany"><i class="fa fa-user-circle"></i> Edit</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" routerLink="/" id="tambahcompany"><i class="fa fa-share-square"></i> Logout</a>
+              </div>
+            </li>
+       </ul>
+      <form class="form-inline my-2 my-lg-0">
+        
+        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+        <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+      </form>
+    </div>
+  </nav>
+
+   <!-- edit akun -->
+      <!-- The Modal Add Data -->
+      <div class="modal" id="editAkun">
+          <div class="modal-dialog">
+            <div class="modal-content">
+        
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Edit Data</h4>
+                <button type="button" class="close" data-dismiss="modal" id="close">&times;</button>
+              </div>
+        
+              <!-- Modal body -->
+              <div class="modal-body">
+                      <div class="container">
+                          <form class="form-horizontal" id="formedit">
+                            <div class="form-group">
+                              <label class="control-label col-sm-2" for="kode">Code</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="kode" value="PS-01">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="control-label col-sm-2" for="email">Email</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="email" value="mas.wahyuromadhon@gmail.com">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="userrole">Role</label>
+                                <div class="col-sm-10">
+                                    <select id="pilihuser">
+                                        <option nama="#" value="">Select</option>
+                                        <option nama="#" value="">Admin</option>
+                                        <option nama="#" value="">Management</option>
+                                        <option nama="#" value="">Payroll Specialist</option>
+                                      </select>
+                                </div>
+                              </div>		
+                          </form>		
+                      </div>
+              </div>
+        
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Back</button>
+                <a type="submit" class="btn btn-success" id="btnModalCompany" href="/dataaccount"><span class="glyphicon glyphicon-send"></span> Update</a>
+              </div>
+        
+            </div>
+          </div>
+        </div>
+      <!-- ------------------ -->
+
+      <!-- notifikasi -->
+      <!-- The Modal Add Data -->
+      <div class="modal" id="notif">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Notification</h4>
+              <button type="button" class="close" data-dismiss="modal" id="close">&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+                    <div class="container">
+                      <table class="table table-striped">
+                        <!-- <thead class="thead-light">
+                          <tr>
+                              <th scope="col">Client</th>
+                            <th scope="col">Task</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Status</th>
+                          </tr>
+                        </thead> -->
+                        <tbody>
+                          <tr>
+                              <td>PT. Lawencon International</td>
+                            <td>TASK-01</td>
+                            <td>Cuti Tahunan</td>
+                            <td>Pending</td>
+                          </tr>
+                          <tr>
+                              <td>PT. Lawencon International</td>
+                            <td>TASK-02</td>
+                            <td>THR Lebaran</td>
+                            <td>Pending</td>
+                          </tr>
+                          <tr>
+                              <td>Microsoft</td>
+                            <td>TASK-01</td>
+                            <td>Cuti Sakit</td>
+                            <td>Pending</td>
+                          </tr>
+                          <tr>
+                              <td>Microsoft</td>
+                            <td>TASK-03</td>
+                            <td>THR Lebaran</td>
+                            <td>Pending</td>
+                          </tr>
+                      </table>
+                    </div>
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-dark" data-dismiss="modal">Back</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+    <!-- ------------------ -->

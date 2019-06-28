@@ -1,0 +1,249 @@
+<navbar></navbar><br>
+<div class="container" id="posisidua">
+    <div class="row">
+      <div class="ui-g-4 ui-md-4 ui-lg-4">
+          
+          <a type="button" class="btn btn-dark btn-sm" href="/home">
+            <i class="fa fa-home"></i> Home
+        </a>
+        
+      </div>
+      <div class="ui-g-4 ui-md-4 ui-lg-4">
+        <h3><b>MASTER SCHEDULE</b></h3>
+      </div>
+      <div class="ui-g-4 ui-md-4 ui-lg-4" id="navkanan">      
+       
+    </div>
+  </div>
+</div>
+
+<div class="container" id="posisiketiga">
+    <div class="row">
+      <div class="ui-g-12 ui-md-12 ui-lg-12">
+        <hr>
+      </div>
+    </div>
+</div>
+
+<div class="container" id="posisiempat">
+    <div class="row">   
+      <div class="col-sm-6 col-md-6 col-lg-6">
+        <!-- Button trigger modal -->
+          <!-- The Modal Add Data -->
+          <div class="modal" id="addModalSchedule">
+            <div class="modal-dialog">
+              <div class="modal-content">
+          
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Add Data</h4>
+                  <button type="button" class="close" data-dismiss="modal" id="close">&times;</button>
+                </div>
+          
+                <!-- Modal body -->
+                <div class="modal-body">
+                        <div class="container">
+                            <form class="form-horizontal">
+                              <div class="form-group" id="kodegroup">
+                                <label class="control-label col-sm-2" for="kode">Code</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="kode">
+                                </div>
+                              </div>
+                              <div class="form-group" id="companygroup">
+                                <label class="control-label col-sm-2" for="companyNama">Client</label>
+                                <div class="col-sm-10">
+                                  <select  class="form-control" id="companyNama">
+                                    <option nama="#" value="">--Pilih--</option>
+                                    <option nama="#" value="">Microsoft</option>
+                                    <option nama="#" value="">Qatar Airways</option>
+                                    <option nama="#" value="">Fly Emirates</option>
+                                    <option nama="#" value="">PT. Lawencon</option>
+                                </select>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                  <!-- <label class="control-label col-sm-2" for="status">Task</label> -->
+                                  <div class="col-sm-10">
+                                          <table id="inputtask" class="table table-responsive table-hover">
+                                              <thead class="thead-dark">
+                                                  <tr>
+                                                      <th id="inputkode">Code</th>
+                                                      <th id="inputdate">First-Date</th>
+                                                      <th id="inputdate">End-Date</th>
+                                                      <th id="inputdeskripsi">Description</th>
+                                                      <th id="action">Action</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                  <tr *ngFor="let field of fieldArray" class="clickable" data-toggle="collapse" data-target="#group-of-rows-1" aria-expanded="false" aria-controls="group-of-rows-1">
+                                                      <td>
+                                                          <input [(ngModel)]="field.code" class="form-control" type="text" name="{{field.code}}" />
+                                                      </td>
+                                                      <td>
+                                                          <input [(ngModel)]="field.startdate" class="form-control" type="date" name="{{field.startdate}}" />
+                                                      </td>
+                                                      <td>
+                                                          <input [(ngModel)]="field.enddate" class="form-control" type="date" name="{{field.enddate}}" />
+                                                      </td>
+                                                      <td>
+                                                          <input [(ngModel)]="field.desk" class="form-control" type="text" name="{{field.desk}}" />
+                                                      </td>
+                                                      <td>
+                                                          <button class="btn btn-danger"  type="button" (click)="deleteFieldValue(i)">Delete</button>
+                                                      </td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td>
+                                                          <input class="form-control" type="text" id="newAttributeCode" [(ngModel)]="newAttribute.code" name="newAttributeCode" />
+                                                      </td>
+                                                      <td>
+                                                          <input class="form-control" type="date" id="newAttributeStartDate" [(ngModel)]="newAttribute.startdate" name="newAttributeStartDate" />
+                                                      </td>
+                                                      <td>
+                                                          <input class="form-control" type="date" id="newAttributeEndDate" [(ngModel)]="newAttribute.enddate" name="newAttributeEndDate" />
+                                                      </td>
+                                                      <td>
+                                                          <input class="form-control" type="text" id="newAttributeDesk" [(ngModel)]="newAttribute.desk" name="newAttributeDesk" />
+                                                      </td>
+                                                      <td>
+                                                          <button class="btn btn-success" type="button" (click)="addFieldValue()">Add</button>
+                                                      </td>
+                                                  </tr>
+                                              </tbody>
+                                          </table>
+                                  </div>
+                                </div>		
+                            </form>		
+                        </div>
+                </div>
+          
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-dark" data-dismiss="modal">Back</button>
+                  <a type="submit" class="btn btn-success" id="btnModalSchedule" href="/schedule"><span class="glyphicon glyphicon-floppy-saved"></span> Save</a>
+
+                </div>
+          
+              </div>
+            </div>
+          </div>
+
+        
+          <!-- --------------------------------------------------- -->
+
+    <!-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+      <span class="glyphicon glyphicon-random"></span> Set Default
+    </button> -->
+    <!-- <span class="ui-float-label ">
+        <input #gb id="float-input" type="text" size="30" pInputText> 
+        <label for="float-input" class="fa fa-search">Search</label>
+    </span> -->
+
+  <!-- <div class="table-inverse"> -->
+    <table class="table">
+       
+        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addModalSchedule" id="tambahschedule">
+            <i class="fa fa-plus-circle"></i> Schedule                          
+        </button>
+  <p-dataTable [value]="details" [rows]="4" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,15,20,25]" [globalFilter]="gb">    
+      <p-header></p-header>            
+      <p-header>Default Schedule</p-header>                
+    <p-column header="No." [style]="{'width':'5%'}">
+          <ng-template let-i="rowIndex" pTemplate="body" >
+            {{i+1}}  
+          </ng-template>
+      </p-column>
+      <p-column field="schedule.scheduleCode" header="Code" [sortable]="true" [style]="{'width':'15%'}"></p-column>
+      <p-column field="company.companyName" header="Client" [sortable]="true" [style]="{'width':'30%'}"></p-column>
+      <p-column field="" header="All Schedule" [style]="{'width':'10%'}">
+          <ng-template let-stat="rowData" pTemplate>
+            <div class="my-center-text">
+                <button type="buttton" (click)="active(stat)" class="{{stat.active ? 'active' : 'non-active'}}"
+                (click)="getDetail(stat.company.companyId)" class="clickable" data-toggle="collapse" data-target="#group-of-rows-1" aria-expanded="false" aria-controls="group-of-rows-1"
+                class="btn btn-info btn-sm" id="btnedit"><i class="fa fa-hand-o-right fa-lg"></i>
+                </button>
+            </div>
+          </ng-template>
+        </p-column>
+  </p-dataTable>
+  </table>
+      </div>
+
+    <div class="ui-g-1 ui-md-1 ui-lg-1"></div>
+
+    <div class="ui-g-5 ui-md-5 ui-lg-5">
+        <!-- <table class="table table-hover" id="tbldetail">              
+            <p-dataTable [value]="detailsss" [rows]="2" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[4,7,10,20]" [globalFilter]="gb" id="group-of-rows-1" class="collapse">    
+                <p-column header="No." [style]="{'width':'9%'}">
+                    <ng-template let-i="rowIndex" pTemplate="body">
+                      {{i+1}}  
+                    </ng-template>
+                </p-column>
+                <p-column field="taskCode" header="Code" [style]="{'width':'20%'}" [sortable]="true"></p-column>
+                <p-column field="taskDescription" header="Description" [sortable]="true"></p-column>
+                <p-column field="" header="Range-Date" [style]="{'width':'20%'}">
+                    <ng-template let-tanggal="rowData" pTemplate type="body">
+                        {{ tanggal.startDate}} - {{ tanggal.finishDate}}
+                    </ng-template>
+                </p-column>
+
+            </p-dataTable>
+        </table> -->
+        <table class="table table-hover" id="tbldetail">
+          <p-dataTable selectionMode="single" [value]="detailsss" [rows]="2" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,15,20,25]" [globalFilter]="gb" id="group-of-rows-1" class="collapse">    
+          <p-header>List Schedule</p-header>            
+            <p-column header="No." [style]="{'width':'9%'}">
+                  <ng-template let-i="rowIndex" pTemplate="body">
+                    {{i+1}}  
+                  </ng-template>
+              </p-column>
+              <p-column field="scheduleCode" header="Code" [style]="{'width':'20%'}" [sortable]="true"></p-column>
+              <p-column field="company.companyName" header="Client" [sortable]="true" [style]="{'width':'30%'}"></p-column>
+              <p-column field="" header="Task" [style]="{'width':'10%'}">
+                  <ng-template let-stat="rowData" pTemplate>
+                    <div class="my-center-text">
+                        <button type="buttton"
+                        (click)="getTask(stat.scheduleId)" class="clickable" data-toggle="collapse" data-target="#group-of-rows-2" aria-expanded="false" aria-controls="group-of-rows-2"
+                        class="btn btn-info btn-sm" id="btnedit"><i class="fa fa-files-o fa-lg"></i>
+                        </button>
+                    </div>
+                  </ng-template>
+                </p-column>
+                <p-column field="" header="Active?" [style]="{'width':'12%'}">
+                    <ng-template let-stat="rowData" pTemplate>
+                      <div class="my-center-text">
+                          <label class="checkboxx2">
+                              <input type="checkbox" (click)="getCompanyId(stat.scheduleId)" >
+                              <span class="checkmark2"></span>
+                            </label>
+                      </div>
+                    </ng-template>
+                </p-column>
+          </p-dataTable>
+      </table>
+
+      <table class="table table-hover" id="tbldetail">   
+          <p-dataTable selectionMode="single" [value]="tasks" [rows]="2" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,15,20,25]" [globalFilter]="gb" id="group-of-rows-2" class="collapse">    
+          <p-header>List Task</p-header>                          
+            <p-column header="No." [style]="{'width':'9%'}">
+                  <ng-template let-i="rowIndex" pTemplate="body">
+                    {{i+1}}  
+                  </ng-template>
+              </p-column>
+              <p-column field="taskCode" header="Code" [style]="{'width':'20%'}" [sortable]="true"></p-column>
+              <p-column field="taskDescription" header="Description" [sortable]="true"></p-column>
+              <p-column field="" header="Range-Date" [style]="{'width':'20%'}">
+                  <ng-template let-tanggal="rowData" pTemplate type="body">
+                      {{ tanggal.startDate}} - {{ tanggal.finishDate}}
+                  </ng-template>
+              </p-column>
+          </p-dataTable>
+      </table>
+  </div>
+</div>
+
+<div class="footer">
+    &copy; Digitalent Solution | Bootcamp Programmer | PT. Lawencon International | 2019
+</div>

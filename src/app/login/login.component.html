@@ -1,0 +1,30 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="https://dl.jpeg.io/b41b8d96de14b90b2dd014124635d736/Lawencon_Logo__1_.jpg" id="imgLogin" height="auto" width="130" />
+    </div>
+
+    <!-- Login Form -->
+    <p-growl class="fixed-top" [value]="msgs"></p-growl>
+    <form class="form-horizontal" [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
+      <input type="text" formControlName="username" class="form-control form-control-sm" id="login" class="fadeIn second" name="login" placeholder="Email">
+      <input type="password" formControlName="password" class="form-control form-control-sm" id="password" class="fadeIn third" name="login" placeholder="password">
+      <br>
+      <button id="btnLogin" class="fadeIn fourth" type="submit" class="btn btn-info btn-md">Login</button>
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover">Schedule Mark</a>
+    </div>
+
+  </div>
+</div>

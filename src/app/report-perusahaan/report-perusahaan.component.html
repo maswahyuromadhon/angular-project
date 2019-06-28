@@ -1,0 +1,148 @@
+\<navbar></navbar>
+<br>
+<div class="container" id="posisidua">
+    <div class="row">
+      <div class="ui-g-4 ui-md-4 ui-lg-4">
+          
+          <a type="button" class="btn btn-dark btn-sm" href="/home">
+            <i class="fa fa-home"></i> Home
+        </a>
+      </div>
+      <div class="ui-g-4 ui-md-4 ui-lg-4">
+        <h3><b>
+            MONTHLY REPORT</b></h3>
+      </div>
+      <div class="ui-g-4 ui-md-4 ui-lg-4" id="navkanan">      
+          
+    </div>
+  </div>
+</div>
+
+<div class="container" id="posisiketiga">
+    <div class="row">
+      <div class="ui-g-12 ui-md-12 ui-lg-12">
+        <hr>
+      </div>
+    </div>
+</div>
+
+<div class="container" id="posisiempat">
+    <div class="row">
+      <div class="ui-g-12 ui-md-12 ui-lg-12">
+          <form class="form-horizontal" [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <select formControlName="yearMonth" id="selectbulan">
+                <option nama="#" value="">--SelectPeriode--</option>
+                <option nama="2019-MEI" value="2019-MEI">May</option>
+                <option nama="2019-JUNI" value="2019-JUNI">June</option>
+                      </select>
+                <button type="submit" class="btn btn-primary btn-sm" id="btncari">Search</button>
+                </div>
+            </div>	
+          </form>
+            <br>
+      <p-treeTable [value]="reports" id="trtable" resizableColumns="true">
+        <p-header></p-header>
+      <p-header>Full Report</p-header>                
+      <p-column field="" header="Periode" [sortable]="true" [style]="{'width':'8%'}">
+        <ng-template pTemplate type="body">
+          <div *ngFor="let bulan of reports">
+              {{ bulan.yearMonth }}
+          </div>
+        </ng-template>
+      </p-column>
+      <p-column field="" header="PS-User">
+    <ng-template pTemplate type="body">
+      <div *ngFor="let bulan of reports">
+      <div *ngFor="let ps of bulan.payrolls">
+          {{ ps.userName }}
+      </div>
+      </div>
+    </ng-template>
+     </p-column>
+     <p-column field="" header="Client">
+    <ng-template pTemplate type="body">
+      <div *ngFor="let bulan of reports">
+      <div *ngFor="let ps of bulan.payrolls">
+      <div *ngFor="let cp of ps.companys">
+          {{ cp.companyName }}
+      </div>
+      </div>
+    </div>
+    </ng-template>
+</p-column>
+<p-column field="" header="Task">
+    <ng-template pTemplate type="body">
+      <div *ngFor="let bulan of reports">
+      <div *ngFor="let ps of bulan.payrolls">
+      <div *ngFor="let cp of ps.companys">
+      <div *ngFor="let tsk of cp.tasks">
+          {{ tsk.taskCode }}
+      </div>
+      </div>
+    </div>
+  </div>
+    </ng-template>
+</p-column>
+<p-column field="" header="Description" [style]="{'width':'25%'}">
+    <ng-template pTemplate type="body">
+      <div *ngFor="let bulan of reports">
+      <div *ngFor="let ps of bulan.payrolls">
+      <div *ngFor="let cp of ps.companys">
+      <div *ngFor="let tsk of cp.tasks">
+          {{ tsk.descriptionTask }}
+      </div>
+      </div>
+    </div>
+  </div>
+    </ng-template>
+</p-column>
+<p-column field="" header="Range-Date">
+    <ng-template pTemplate type="body">
+      <div *ngFor="let bulan of reports">
+      <div *ngFor="let ps of bulan.payrolls">
+      <div *ngFor="let cp of ps.companys">
+      <div *ngFor="let tsk of cp.tasks">
+          {{ tsk.startDate }} -
+          {{ tsk.finishDate }}
+      </div>
+      </div>
+    </div>
+  </div>
+    </ng-template>
+</p-column>
+<p-column field="" header="Realization-Date">
+    <ng-template pTemplate type="body">
+      <div *ngFor="let bulan of reports">
+      <div *ngFor="let ps of bulan.payrolls">
+      <div *ngFor="let cp of ps.companys">
+      <div *ngFor="let tsk of cp.tasks">
+          {{ tsk.dateRealization }}
+      </div>
+      </div>
+    </div>
+  </div>
+    </ng-template>
+</p-column>
+<p-column field="" header="Status">
+    <ng-template pTemplate type="body">
+      <div *ngFor="let bulan of reports">
+      <div *ngFor="let ps of bulan.payrolls">
+      <div *ngFor="let cp of ps.companys">
+      <div *ngFor="let tsk of cp.tasks">
+          {{ tsk.status }}
+      </div>
+      </div>
+    </div>
+  </div>
+    </ng-template>
+</p-column>
+    </p-treeTable>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  &copy; Digitalent Solution | Bootcamp Programmer | PT. Lawencon International | 2019
+</div>

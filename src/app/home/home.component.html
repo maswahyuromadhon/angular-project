@@ -1,0 +1,153 @@
+<navbar></navbar>
+<br>
+<div class="container" id="posisidua">
+    <div class="row">
+      <!-- <div class="ui-g-4 ui-md-4 ui-lg-4">
+        <div class="chip">
+          <img src="./assets/2018.jpg" alt="Person" width="96" height="96">
+          PS1 : Wahyu Romadhon
+      </div>
+      </div> -->
+      <div class="ui-g-12 ui-md-12 ui-lg-12">
+        <h3><b>PROGRESS REALIZATION</b></h3>
+        <hr>
+      </div>
+      <!-- <div class="ui-g-4 ui-md-4 ui-lg-4">
+        <h3></h3>
+      </div> -->
+    </div>
+</div>
+
+<div class="container" id="posisiketiga">
+    <div class="row">
+      <div class="ui-g-6 ui-md-6 ui-lg-6">
+         
+
+        <!-- detail modal -->
+           <!-- The Modal Detail Schedule -->
+
+  <div class="modal" id="modaldetail">
+      <div class="modal-dialog">
+        <form class="form-horizontal" [formGroup]="realizedForm" (ngSubmit)="onEdit(realizedForm.value)">          
+        <div class="modal-content">
+    
+          <!-- Modal Header -->
+          <div class="modal-header" id="headertask">
+            <h4 class="modal-title">Realization Task</h4>
+            <button type="button" class="close" data-dismiss="modal" id="close">&times;</button>
+          </div>
+    
+          <!-- Modal body -->
+          <div class="modal-body" id="bodytask">
+            <input type="text" formControlName="dtlTRxId" hidden>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Realization</label>
+                    <input type="date" formControlName="dateRealized" class="form-control form-control-sm" id="realisasi">
+                  </div>
+                  <br>
+                  <div class="form-group">
+                      <span class="ui-float-label">
+                          <input formControlName="notes" class="form-control form-control-sm" id="note" type="text" size="30" pInputText> 
+                          <label for="float-input">Note</label>
+                      </span>
+                  </div>
+
+          </div>
+    
+          <!-- Modal footer -->
+          <div class="modal-footer" id="footertask">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Back</button>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-telegram fa-lg"></i> Save</button>
+          </div>
+    
+        </div>
+      </form>
+      </div>
+    </div>
+        <!-- -------------------------- -->
+
+        <table class="table table-hover">
+      <p-dataTable [value]="realized" [rows]="2" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,15,20,25]" [globalFilter]="gb">    
+      <p-header></p-header>
+      <p-header>Current Schedule</p-header>                        
+        <p-column header="No." [style]="{'width':'9%'}">
+              <ng-template let-i="rowIndex" pTemplate="body" >
+                {{i+1}}  
+              </ng-template>
+          </p-column>
+          <p-column field="scheduleCode" header=" Code" [sortable]="true" [style]="{'width':'18%'}"></p-column>
+          <p-column field="companyName" header="Client" [sortable]="true" [style]="{'width':'23%'}"></p-column>
+          <p-column field="yearMonth" header="Periode" [style]="{'width':'15%'}"></p-column>
+          <p-column field="status" header="Status" [style]="{'width':'25%'}"></p-column>
+          <!-- <p-column field="" header="Detail">
+            <ng-template let-stat="rowData" pTemplate>
+              <div class="my-center-text">
+                  <label class="checkboxx">
+                      <input type="checkbox" (click)="getDetail(stat.hdrTrxId)" class="clickable" data-toggle="collapse" data-target="#group-of-rows-1" aria-expanded="false" aria-controls="group-of-rows-1">
+                      <span class="checkmark"></span>
+                    </label>
+              </div>
+            </ng-template>
+          </p-column> -->
+          <p-column field="" header="Detail" [style]="{'width':'10%'}">
+              <ng-template let-stat="rowData" pTemplate>
+                <div class="my-center-text">
+                    <button type="buttton" 
+                    (click)="getDetail(stat.hdrTrxId)" (click)="active(stat)" class="{{stat.active ? 'active' : 'non-active'}}" class="clickable" data-toggle="collapse" data-target="#group-of-rows-1" aria-expanded="false" aria-controls="group-of-rows-1"
+                    class="btn btn-info btn-sm" id="btnedit"><i class="fa fa-hand-o-right fa-lg"></i>
+                    </button>
+                </div>
+              </ng-template>
+            </p-column>
+
+      </p-dataTable>
+      </table>
+      </div>
+      <div class="ui-g-6 ui-md-6 ui-lg-6">
+          <table class="table table-hover">
+              <p-growl class="fixed-top" [value]="msgs"></p-growl>
+              <p-confirmDialog></p-confirmDialog>
+        <p-dataTable selectionMode="single" id="group-of-rows-1" class="collapse" [value]="details" [rows]="2" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,15,20,25]" [globalFilter]="gb">    
+      <p-header>Pending Task</p-header>                            
+          <p-column header="No." [style]="{'width':'7%'}">
+                <ng-template let-i="rowIndex" pTemplate="body" >
+                  {{i+1}}  
+                </ng-template>
+            </p-column>
+            <p-column field="taskCode" header="Periode" [style]="{'width':'15%'}"></p-column>
+            <p-column field="" header="Date" [style]="{'width':'13%'}">
+                <ng-template let-tanggal="rowData" pTemplate type="body">
+                    {{ tanggal.startDate}} - {{ tanggal.finishDate}}
+                </ng-template>
+            </p-column>
+            <p-column field="taskDescription" header="Description" [style]="{'width':'25%'}"></p-column>
+            <p-column field="status" header="Status" [style]="{'width':'15%'}"></p-column>
+            <p-column field="" header="Edit">
+              <ng-template let-stat="rowData" pTemplate>
+                <div class="my-center-text">
+                    <button type="button" (click)="methodDetail(stat.dtlTRxId)" data-toggle="modal" data-target="#modaldetail"
+                    class="btn btn-primary btn-sm" id="btnedit"><i class="fa fa-edit fa-lg"></i>
+                    </button>
+                </div>
+              </ng-template>
+            </p-column>
+            <p-column field="" header="Resolve">
+                <ng-template let-stat="rowData" pTemplate>
+                  <div class="my-center-text">
+                      <button type="button"
+                      (click)="confirmResolve(stat.dtlTRxId)"
+                      class="btn btn-info btn-sm" id="btnedit"><i class="fa fa-refresh fa-spin fa-lg fa-fw"></i>
+                      </button>
+                  </div>
+                </ng-template>
+              </p-column>
+        </p-dataTable>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="footer">
+      &copy; Digitalent Solution | Bootcamp Programmer | PT. Lawencon International | 2019
+  </div>

@@ -1,0 +1,95 @@
+img{
+  margin-top: -4px;
+}
+
+a {
+    cursor: pointer;
+    cursor: hand;
+  }
+  
+  button:hover {
+    background-color: #cfd8dc;
+    color: black;
+  }
+  
+  button:disabled {
+    background-color: #eee;
+    color: red;
+    cursor: auto;
+  }
+  
+  /* Navigation link styles */
+  /* nav a {
+    text-decoration: none;
+    margin-right: 10px;
+    margin-top: 16px;
+    display: inline-block;
+    background-color: #01579b;
+    border-radius: 7px;
+  } */
+
+  nav a:visited, a:link {
+    color: white;
+  }
+  nav a:hover {
+    color: #039be5;
+    background-color: teal;
+  }
+  .nav-item.active {
+    /* background-color: teal; */
+  }
+  
+  #setbrand{
+    margin-top: -5px;
+  }
+
+  #setnav{
+    border: 1px solid;
+    box-shadow: 5px 10px 10px teal;
+  }
+
+  #kode{
+    width: auto;
+}
+
+#email{
+    width: auto;
+}
+
+.form-horizontal{
+    margin-left: 10px;
+}
+
+#btnModalCompany{
+}
+
+#btnModalCompany2{
+}
+
+#close{
+   margin-top: -22px;
+}
+
+.modal-header{
+    background: turquoise;
+}
+
+.modal-footer{
+    background: turquoise;
+}
+
+#tambahcompany{
+    color: black; 
+}
+
+.dropdown-item{
+ 
+}
+
+#lonceng{
+  background-color: whitesmoke;
+}
+
+#formedit{
+  margin-left: 90px;
+}

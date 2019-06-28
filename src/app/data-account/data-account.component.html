@@ -1,0 +1,213 @@
+<navbar></navbar>
+<br>
+<div class="container" id="posisidua">
+    <div class="row">
+      <div class="ui-g-4 ui-md-4 ui-lg-4">
+          <a type="button" class="btn btn-dark btn-sm" href="/home">
+            <i class="fa fa-home"></i> Home
+        </a>
+          
+      </div>
+      <div class="ui-g-4 ui-md-4 ui-lg-4">
+        <h3><b>MASTER ACCOUNT</b></h3>
+      </div>
+      <div class="ui-g-4 ui-md-4 ui-lg-4" id="navkanan">      
+        
+    </div>
+  </div>
+</div>
+<div class="container" id="posisiketiga">
+    <div class="row">
+      <div class="ui-g-12 ui-md-12 ui-lg-12">
+        <hr>
+      </div>
+    </div>
+</div>
+
+<div class="container" id="posisiempat">
+  <div class="row">
+    <div class="ui-g-12 ui-md-12 ui-lg-12">
+    <p-growl class="fixed-top" [value]="msgs"></p-growl>
+        
+      <!-- The Modal Add Data -->
+  <div class="modal" id="addModalCompany1">
+      <p-growl class="fixed-top" [value]="msgs"></p-growl>
+      <div class="modal-dialog">
+          <form class="form-horizontal" [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+        <div class="modal-content">
+    
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Add User</h4>
+            <button type="button" class="close" data-dismiss="modal" id="close">&times;</button>
+          </div>
+    
+          <!-- Modal body -->
+          <div class="modal-body" id="addakun">
+                  <div class="container" >
+                        <div class="form-group">
+                        <span class="ui-float-label">
+                            <input type="text" formControlName="userCode" class="form-control" id="kode" size="30" pInputText>
+                            <label for="float-input">Code</label>                                                       
+                          </span>
+                        </div>
+                        <div class="form-group">
+                            <span class="ui-float-label">
+                              <input type="text" formControlName="userName" class="form-control" id="kode" size="30" pInputText>
+                              <label for="float-input">Name</label>                                                                                   
+                            </span>
+                          </div>
+                        <div class="form-group">
+                          <span class="ui-float-label">
+                            <input type="text" formControlName="email" class="form-control" id="email" size="30" pInputText>
+                            <label for="float-input">Email</label>                                                                                                                 
+                          </span>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                                <select formControlName="userRole" id="userrole">
+                                    <option nama="" value="">--Select Role--</option>
+                                    <option nama="ADMIN" value="ADMIN">Admin</option>
+                                    <option nama="MANAGEMENT" value="MANAGEMENT">Management</option>
+                                    <option nama="PAYROLL_SPECIALLIST" value="PAYROLL_SPECIALLIST">Payroll Specialist</option>
+                                  </select>
+                            </div>
+                        </div>		
+                  </div>
+          </div>
+    
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" (click)="back()" class="btn btn-primary" data-dismiss="modal">Back</button>
+            <button type="submit" class="btn btn-primary" id="btnModalCompany"><i class="fa fa-telegram fa-lg"></i> Save</button>
+          </div>
+    
+      </div>
+      </form>		
+      </div>
+    </div>
+  
+    <!-- edit akun -->
+      <!-- The Modal Add Data -->
+    <div class="modal" id="editAkun">
+        <div class="modal-dialog">
+            <form class="form-horizontal" [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+                <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Edit Data</h4>
+              <button type="button" class="close" data-dismiss="modal" id="close">&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+                    <div class="container">
+                          <div class="form-group">
+                            <label class="control-label col-sm-2" for="kode">Code</label>
+                            <div class="col-sm-10">
+                              <input type="text" formControlName="userCode" class="form-control" id="kode" value="PS-01">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-sm-2" for="email">Email</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="email" value="mas.wahyuromadhon@gmail.com">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="userrole">Role</label>
+                              <div class="col-sm-10">
+                                  <select id="pilihuser">
+                                      <option nama="#" value="">--Pilihan--</option>
+                                      <option nama="#" value="">Admin</option>
+                                      <option nama="#" value="">Management</option>
+                                      <option nama="#" value="">Payroll Specialist</option>
+                                    </select>
+                              </div>
+                            </div>		
+                    </div>
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Back</button>
+              <a type="submit" class="btn btn-primary" id="btnModalCompany" href="/home"><span class="glyphicon glyphicon-send"></span> Update</a>
+            </div>
+      
+          </div>
+        </form>		
+        </div>
+      </div>
+    <!-- ------------------ -->
+    <table class="table">
+        <p-confirmDialog></p-confirmDialog>
+        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addModalCompany1" id="tambahcompany">
+            <i class="fa fa-plus-circle"></i> Data
+        </button>
+        <p-dataTable [value]="posts" [rows]="4" [paginator]="true" [pageLinks]="3" [globalFilter]="gb">    
+            <p-column header="Number" [style]="{'width':'9%'}">
+                <ng-template let-i="rowIndex" pTemplate="body">
+                  {{i+1}}  
+                </ng-template>
+            </p-column>
+            <p-column field="userCode" header="Code" [style]="{'width':'10%'}" [sortable]="true"></p-column>
+            <p-column field="userName" header="Name" [style]="{'width':'15%'}" [sortable]="true"></p-column>
+            <p-column field="email" header="Email"></p-column>
+            <p-column field="userRole" header="Role" [style]="{'width':'18%'}"></p-column>
+            <p-column field="" header="Action" [style]="{'width':'7%'}">
+  
+              <ng-template let-userr="rowData" pTemplate>
+                <div class="my-center-text">
+                    <button type="button"
+                    (click)="confirm2(userr.userId)"
+                    class="btn btn-danger btn-sm"><span class="material-icons">delete</span>
+                    </button>
+                  <!-- <button type="button" class="btn btn-primary btn-circle btn-lg" routerLink="/userform"><i class="fa fa-pencil"></i></button>
+                  <button type="submit" (click)="confirmDelete(userr.idUser, userr.email)" class="btn btn-danger btn-circle btn-lg"><i class="fa fa-trash"></i></button> -->
+                </div>
+              </ng-template>
+            </p-column>
+        </p-dataTable>
+        </table>
+          <!-- <p-confirmDialog></p-confirmDialog>
+      <table datatable class="table table-stripped">
+        <thead class="thead-dark">
+          <tr>
+
+              <th scope="col" colspan="6" id="personadd">
+                  <a type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addModalCompany1" id="tambahcompany">
+                      <span class="material-icons">person_add</span>
+                  </a>
+              </th>
+          </tr>
+          <tr>
+            <th scope="col">Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Action</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of posts" (click)="active(post)" class="{{post.active ? 'active' : 'non-active'}}">
+            <td>{{ post.userCode}}</td>
+            <td>{{ post.userName}}</td>
+            <td>{{ post.email}}</td>
+            <td>{{ post.userRole}}</td>
+            <td><a type="button"
+              (click)="confirm2(post.userId)"
+              class="btn btn-danger btn-sm"><span class="material-icons">delete</span>
+            </a>
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+    &copy; Digitalent Solution | Bootcamp Programmer | PT. Lawencon International | 2019
+</div>
